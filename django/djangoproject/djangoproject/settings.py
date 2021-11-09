@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'burger_restaurant.apps.BurgerRestaurantConfig',    
     'university.apps.UniversityConfig',
     'minifacebook.apps.MinifacebookConfig',
     'django.contrib.admin',
