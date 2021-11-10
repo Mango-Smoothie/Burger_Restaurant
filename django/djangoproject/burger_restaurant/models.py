@@ -5,60 +5,60 @@ from django.db import models
 
 class Customer(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=100)
-    phone_num = models.CharField(max_length=10)
+    name = models.CharField("Name", max_length=100)
+    phone_num = models.CharField("Phone Number", max_length=10)
 
 
     def __str__(self):
-        return "<Customer id={} Name={} Phone Number={}>".format(
-            self.id, self.name, self.phone_num
+        return "<{} - {}>".format(
+            self.name, self.phone_num
         )
 
 class Order(models.Model):
     order_num = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    order_status = models.CharField(max_length=100)
-    total_price = models.IntegerField() # need to change to allow floats.!!!!!!!!
+    order_status = models.CharField("Order Status", max_length=100)
+    total_price = models.IntegerField("Total Price") # need to change to allow floats.!!!!!!!!
     customer = models.ForeignKey(Customer, null=False, on_delete=models.CASCADE)
 
 class Drink_Menu(models.Model):
     drink_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     drink_name = models.CharField(max_length=100)
-    d_price = models.IntegerField()
+    d_price = models.IntegerField("Price")
 
 class Drink_Order(models.Model):
     order_number = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
     drink_name = models.ForeignKey(Drink_Menu, null=False, on_delete=models.CASCADE)
-    d_quantity = models.IntegerField()
+    d_quantity = models.IntegerField("Quantity")
 
 class Side_Menu(models.Model):
     side_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     side_name = models.CharField(max_length=100)
-    s_price = models.IntegerField()
+    s_price = models.IntegerField("Price")
 
 class Side_Order(models.Model):
     order_number = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
     side_name = models.ForeignKey(Side_Menu, null=False, on_delete=models.CASCADE)
-    s_quantity = models.IntegerField()
+    s_quantity = models.IntegerField("Quantity")
 
 class Veggie_Menu(models.Model):
     veggie_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     veggie_name = models.CharField(max_length=100)
-    veggie_price = models.IntegerField()
+    veggie_price = models.IntegerField("Price")
 
 class Patty_Menu(models.Model):
     patty_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     patty_name = models.CharField(max_length=100)
-    p_price = models.IntegerField()
+    p_price = models.IntegerField("Price")
 
 class Buns_Menu(models.Model):
     buns_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     buns_name = models.CharField(max_length=100)
-    b_price = models.IntegerField()
+    b_price = models.IntegerField("Price")
 
 class Sauce_Menu(models.Model):
     sauce_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     sauce_name = models.CharField(max_length=100)
-    s_price = models.IntegerField()
+    s_price = models.IntegerField("Price")
 
 class Burger_Order(models.Model):
     order_number = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
@@ -66,7 +66,7 @@ class Burger_Order(models.Model):
     buns = models.ForeignKey(Buns_Menu, null=False, on_delete=models.CASCADE)
     veggies = models.ForeignKey(Veggie_Menu, null=False, on_delete=models.CASCADE)
     sauce = models.ForeignKey(Sauce_Menu, null=False, on_delete=models.CASCADE)
-    b_quantity = models.IntegerField()
+    b_quantity = models.IntegerField("Quantity")
 
 
 
