@@ -17,13 +17,14 @@ class Customer(models.Model):
 class Order(models.Model):
     order_num = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     order_status = models.CharField("Order Status", max_length=100)
-    total_price = models.IntegerField("Total Price") # need to change to allow floats.!!!!!!!!
+    total_price = models.DecimalField("Total Price", max_digits=10, decimal_places=2)
     customer = models.ForeignKey(Customer, null=False, on_delete=models.CASCADE)
+
 
 class Drink_Menu(models.Model):
     drink_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    drink_name = models.CharField(max_length=100)
-    d_price = models.IntegerField("Price")
+    drink_name = models.CharField("Drink Name", max_length=100)
+    d_price = models.DecimalField("Price", max_digits=10, decimal_places=2)
 
 class Drink_Order(models.Model):
     order_number = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
@@ -32,8 +33,8 @@ class Drink_Order(models.Model):
 
 class Side_Menu(models.Model):
     side_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    side_name = models.CharField(max_length=100)
-    s_price = models.IntegerField("Price")
+    side_name = models.CharField("Side Name", max_length=100)
+    s_price = models.DecimalField("Price", max_digits=10, decimal_places=2)
 
 class Side_Order(models.Model):
     order_number = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
@@ -42,23 +43,23 @@ class Side_Order(models.Model):
 
 class Veggie_Menu(models.Model):
     veggie_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    veggie_name = models.CharField(max_length=100)
-    veggie_price = models.IntegerField("Price")
+    veggie_name = models.CharField("Vegetable Name", max_length=100)
+    veggie_price = models.DecimalField("Price", max_digits=10, decimal_places=2)
 
 class Patty_Menu(models.Model):
     patty_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    patty_name = models.CharField(max_length=100)
-    p_price = models.IntegerField("Price")
+    patty_name = models.CharField("Patty Name", max_length=100)
+    p_price = models.DecimalField("Price", max_digits=10, decimal_places=2)
 
 class Buns_Menu(models.Model):
     buns_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    buns_name = models.CharField(max_length=100)
-    b_price = models.IntegerField("Price")
+    buns_name = models.CharField("Buns Name", max_length=100)
+    b_price = models.DecimalField("Price", max_digits=10, decimal_places=2)
 
 class Sauce_Menu(models.Model):
     sauce_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    sauce_name = models.CharField(max_length=100)
-    s_price = models.IntegerField("Price")
+    sauce_name = models.CharField("Sauce Name", max_length=100)
+    s_price = models.DecimalField("Price", max_digits=10, decimal_places=2)
 
 class Burger_Order(models.Model):
     order_number = models.ForeignKey(Order, null=False, on_delete=models.CASCADE)
@@ -67,35 +68,3 @@ class Burger_Order(models.Model):
     veggies = models.ForeignKey(Veggie_Menu, null=False, on_delete=models.CASCADE)
     sauce = models.ForeignKey(Sauce_Menu, null=False, on_delete=models.CASCADE)
     b_quantity = models.IntegerField("Quantity")
-
-
-
-#     @property
-#     def latest_status(self):
-#         return self.status_set.order_by("-date_time").first()
-
-
-# class Status(models.Model):
-#     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-#     message = models.TextField()
-#     date_time = models.DateTimeField()
-#     profile = models.ForeignKey(Profile, null=False, on_delete=models.CASCADE)
-
-#     class Meta:
-#         verbose_name_plural = "Statuses"
-
-#     def __str__(self):
-#         return f"<Status from={self.profile_id} at={self.date_time}>"
-
-
-# class Poke(models.Model):
-#     poker = models.ForeignKey(
-#         Profile, null=False, on_delete=models.CASCADE, related_name="poke_poker"
-#     )
-#     pokee = models.ForeignKey(
-#         Profile, null=False, on_delete=models.CASCADE, related_name="poke_pokee"
-#     )
-#     date_time = models.DateTimeField()
-
-#     def __str__(self):
-#         return f"<Poke from={self.poker_id} to={self.pokee_id} at={self.date_time}>"
