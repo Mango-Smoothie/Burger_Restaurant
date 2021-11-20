@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Customer
+
+def index(request):
+    context = {"customers": Customer.objects.all()}
+    return render(request, "index.html", context)

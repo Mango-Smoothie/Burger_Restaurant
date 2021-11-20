@@ -8,6 +8,8 @@ class Customer(models.Model):
     name = models.CharField("Name", max_length=100)
     phone_num = models.CharField("Phone Number", max_length=10)
 
+    class Meta:
+        verbose_name_plural = "Customers"
 
     def __str__(self):
         return "<{} - {}>".format(
