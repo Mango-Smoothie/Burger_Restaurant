@@ -31,7 +31,7 @@ When you are done running the application, you can stop it by typing `Control-C`
 When loading the following pages, you will get errors but continue to step 3 to fix them.
 Load <http://localhost:8080> and you should be redirected to the "Django administration" login interface.
 
-Load <http://localhost:8080/minifacebook> to view the latest statuses of users of the minifacebook application. See instructions below for using the Django admin interface, which you can use to create users and status updates. 
+Load <http://localhost:8080/burger_restaurant> to view the latest statuses of users of the minifacebook application. See instructions below for using the Django admin interface, which you can use to create users and status updates. 
 
 ## Step 3: Migrate then create superuser
 

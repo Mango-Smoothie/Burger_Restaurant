@@ -1,19 +1,43 @@
 {% extends "base.html" %}
 
-{% block title %}Customers1{% endblock %}
+{% block title %}Burger Restaurant{% endblock %}
 
 {% block container %}
 
-<h1>Customer2</h1>
+<!-- {% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %} -->
+
+<h1>Welcome To our Burger Restaurant!</h1>
+<h4>By: Nathan Tran and Han Choi</h4>
+
+<h2>Customers</h2>
+{% if customers %}
 
 <table>
-<tr><th>Name</th><th>Phone Number</th></tr>
+<tr><th>Name</th><th>Phone Number</th><th>Delete</th><th>Edit</th></tr>
 {% for customer in customers %}
   <tr>
     <td>{{customer.name}}</td>
     <td>{{customer.phone_num}}</td>
+    <!-- <td> <button type="button">Add Student</button> </td> -->
+    <td> <button type="button">Delete Student</button> </td>
+    <td> <button type="button">Edit Student</button> </td>
+
+
   </tr>
 {% endfor %}
 </table>
+<button type="button">Add Student</button> 
 
+{% else %}
+  <p>No customers.</p>
+  <button type="button">Add Student</button> 
+{% endif %}
 {% endblock %}

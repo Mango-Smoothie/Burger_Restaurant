@@ -11,17 +11,16 @@ class Customer(models.Model):
     class Meta:
         verbose_name_plural = "Customers"
 
+    # controls how to use the 
     def __str__(self):
         return "<{} - {}>".format(
-            self.name, self.phone_num
-        )
+            self.name, self.phone_num)
 
 class Order(models.Model):
     order_num = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     order_status = models.CharField("Order Status", max_length=100)
     total_price = models.DecimalField("Total Price", max_digits=10, decimal_places=2)
     customer = models.ForeignKey(Customer, null=False, on_delete=models.CASCADE)
-
 
 class Drink_Menu(models.Model):
     drink_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
