@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Latest Statuses{% endblock %}
+
+{% block container %}
+
+<h1>Create a Customer </h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+<!-- {% csrf_token %}
+Name: <input type="text" name="name"/><br/>
+Phone Number: 
+<input type="text" name="phone_num"/><br/> -->
+<input type="submit" name="Submit"/>
+</form>
+
+{% endblock %}

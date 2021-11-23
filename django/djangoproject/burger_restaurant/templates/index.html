@@ -21,23 +21,26 @@
 {% if customers %}
 
 <table>
-<tr><th>Name</th><th>Phone Number</th><th>Delete</th><th>Edit</th></tr>
+<tr><th>Name</th><th>Phone Number</th><th>Update</th><th>Delete</th></tr>
 {% for customer in customers %}
   <tr>
     <td>{{customer.name}}</td>
     <td>{{customer.phone_num}}</td>
     <!-- <td> <button type="button">Add Student</button> </td> -->
+    <td> <a href="{% url 'update_customer' customer.id%}"><button>Update Customer</button></a></td>
     <td> <button type="button">Delete Student</button> </td>
-    <td> <button type="button">Edit Student</button> </td>
 
 
   </tr>
 {% endfor %}
 </table>
-<button type="button">Add Student</button> 
+<a href="{% url 'add_customer' %}">
+<button>Add Customer</button></a>
+<!-- <button type="button">Add Customer</button></a> -->
 
 {% else %}
   <p>No customers.</p>
-  <button type="button">Add Student</button> 
+  <a href="{% url 'add_customer' %}">
+    <button>Add Customer</button></a>
 {% endif %}
 {% endblock %}
