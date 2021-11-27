@@ -2,13 +2,19 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 
-from .models import Customer
+from .models import Customer, Order
 from .forms import CustomerForm
 
-def index(request):
-    context = {"customers": Customer.objects.all()}
+def home(request):
+
     # return HttpResponse("Hello, world. You're at the Burger Restaurant index.")
-    return render(request, "index.html", context)
+    return render(request, "home.html")
+
+def customer(request):
+    context = {"customers": Customer.objects.all()
+    }
+    # return HttpResponse("Hello, world. You're at the Burger Restaurant index.")
+    return render(request, "customer.html", context)
 
 def createCustomer(request):
         
@@ -17,7 +23,7 @@ def createCustomer(request):
         form = CustomerForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/home/')
+            return redirect('/customer/')
 
     context = {'form':form}
     return render(request,'addCustomer.html', context) 
@@ -35,3 +41,10 @@ def updateCustomer(request, primary):
 
     context ={'form': form}
     return render(request,'addCustomer.html', context) 
+
+
+def order(request):
+    context = {"orders": Order.objects.all()
+    }
+    # return HttpResponse("Hello, world. You're at the Burger Restaurant index.")
+    return render(request, "order.html", context)

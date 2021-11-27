@@ -31,7 +31,7 @@ When you are done running the application, you can stop it by typing `Control-C`
 When loading the following pages, you will get errors but continue to step 3 to fix them.
 Load <http://localhost:8080> and you should be redirected to the "Django administration" login interface.
 
-Load <http://localhost:8080/burger_restaurant> to view the latest statuses of users of the minifacebook application. See instructions below for using the Django admin interface, which you can use to create users and status updates. 
+Load <http://localhost:8080/home> to view the latest statuses of users of the minifacebook application. See instructions below for using the Django admin interface, which you can use to create users and status updates. 
 
 ## Step 3: Migrate then create superuser
 
@@ -51,4 +51,36 @@ docker compose exec django python manage.py createsuperuser
 ```
 docker compose exec django python manage.py makemigrations
 ```
+
+
+
+{% if orders %}
+<table>
+<tr><th>Order Number</th><th>Order Status</th><th>Total Price</th><th>Customer Phone Number</th><th>Update</th><th>Delete</th></tr>
+{% for order in orders %}
+  <tr>
+    <td>{{order.order_num}}</td>
+    <td>{{order.order_status}}</td>
+    <td>{{order.total_price}}</td>
+    <td>{{order.customer}}</td>
+    <!-- <td> <button type="button">Add Student</button> </td> -->
+    <!-- <td> <a href="{% url 'update_customer' customer.id%}"><button>Update Customer</button></a></td> -->
+    <td> <button type="button">Edit Order</button> </td>
+    <td> <button type="button">Delete Order</button> </td>
+
+
+  </tr>
+{% endfor %}
+</table>
+<!-- <a href="{% url 'add_customer' %}">
+<button>Add Customer</button></a> -->
+<button type="button">Add Order</button></a>
+
+{% else %}
+  <p>No Order.</p>
+  <!-- <a href="{% url 'add_customer' %}">
+    <button>Add Customer</button></a> -->
+  <button type="button">Add Order</button></a>
+
+{% endif %}
 
