@@ -23,16 +23,11 @@
 </table>
 <a href="{% url 'add_customer' %}">
 <button>Add Customer</button></a>
-<!-- <a href="{% url 'home' %}">
-    <button>Back to home</button></a> -->
-<!-- <button type="button">Add Customer</button></a> -->
 
 {% else %}
   <p>No customers.</p>
   <a href="{% url 'add_customer' %}">
     <button>Add Customer</button></a>
-    <!-- <a href="{% url 'home' %}">
-    <button>Back to home</button></a> -->
 {% endif %}
 
 {% endblock %}
