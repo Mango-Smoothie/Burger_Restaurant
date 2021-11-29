@@ -22,6 +22,10 @@ class Order(models.Model):
     total_price = models.DecimalField("Total Price", max_digits=10, decimal_places=2)
     customer = models.ForeignKey(Customer, null=False, on_delete=models.CASCADE)
 
+    # controls how to use the 
+    def __str__(self):
+        return format(self.customer)
+
 class Drink_Menu(models.Model):
     drink_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     drink_name = models.CharField("Drink Name", max_length=100)

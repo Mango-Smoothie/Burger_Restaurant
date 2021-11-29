@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block container %}
+
+<p>Do you really want to delete "{{order}}"?</p>
+
+<form action = "{% url 'delete_order' order.order_num %}" method = "POST">
+    {% csrf_token %}
+    <a href = "{% url 'home' %}"> Cancel</a>
+
+    <input type = "submit" name = "Confirm">
+
+
+</form>
+{% endblock %}

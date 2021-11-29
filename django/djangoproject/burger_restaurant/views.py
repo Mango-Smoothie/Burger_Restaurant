@@ -67,4 +67,28 @@ def createOrder(request):
             return redirect('/home/order/')
 
     context = {'form':form}
-    return render(request,'addOrder.html', context)
+    return render(request,'addUpdateOrder.html', context)
+
+def updateOrder(request, primary):
+    
+    order = Order.objects.get(order_num=primary)
+    form = OrderForm(instance=order)
+
+    if request.method == 'POST':
+        form = OrderForm(request.POST, instance = order)
+        if form.is_valid():
+            form.save()
+            return redirect('/home/order/')
+
+    context ={'form': form}
+    return render(request,'addUpdateOrder.html', context) 
+
+
+def deleteOrder(request, primary):
+    
+    order = Order.objects.get(order_num=primary)
+    if request.method =="POST":
+        order.delete()
+        return redirect('/home/order/')
+    context ={'order': order}
+    return render(request,'deleteOrder.html', context) 

@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% block title %}Orders{% endblock %}
-
 {% block container %}
 
 <h2>Orders</h2>
@@ -14,8 +12,8 @@
     <td>{{order.order_status}}</td>
     <td>{{order.total_price}}</td>
     <td>{{order.customer}}</td>
-    <td> <button type="button">Edit Order</button> </td>
-    <td> <button type="button">Delete Order</button> </td>
+    <td> <a href="{% url 'update_order' order.order_num%}"><button>Edit Order</button></a></td>
+    <td> <a href="{% url 'delete_order' order.order_num%}"><button>Delete Order</button></a></td>
 
   </tr>
 {% endfor %}
