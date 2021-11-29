@@ -23,6 +23,23 @@ urlpatterns = [
     path('delete_side/<str:primary>/', views.deleteSide, name = "delete_side" ),
     path('delete_drink/<str:primary>/', views.deleteDrink, name = "delete_drink" ),
 
+    path('add_veggie/', views.createVeggie, name="add_veggie"),
+    path('add_buns/', views.createBuns, name="add_buns"),
+    path('add_sauce/', views.createSauce, name="add_sauce"),
+    path('add_patty/', views.createPatty, name="add_patty"),
+    path('update_veggie/<str:primary>/', views.updateVeggie, name = "update_veggie" ),
+    path('update_buns/<str:primary>/', views.updateBuns, name = "update_buns" ),
+    path('update_sauce/<str:primary>/', views.updateSauce, name = "update_sauce" ),
+    path('update_patty/<str:primary>/', views.updatePatty, name = "update_patty" ),
+    path('delete_veggie/<str:primary>/', views.deleteVeggie, name = "delete_veggie" ),
+    path('delete_buns/<str:primary>/', views.deleteBuns, name = "delete_buns" ),
+    path('delete_sauce/<str:primary>/', views.deleteSauce, name = "delete_sauce" ),
+    path('delete_patty/<str:primary>/', views.deletePatty, name = "delete_patty" ),
+
+
+
+
+
 
 
 ]
