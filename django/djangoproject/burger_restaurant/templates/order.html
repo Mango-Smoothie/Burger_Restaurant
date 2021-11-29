@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Orders{% endblock %}
+
+{% block container %}
+
+<h2>Orders</h2>
+
+{% if orders %}
+<table>
+<tr><th>Order Status</th><th>Total Price</th><th>Customer Phone Number</th><th>Update</th><th>Delete</th></tr>
+{% for order in orders %}
+  <tr>
+    <td>{{order.order_status}}</td>
+    <td>{{order.total_price}}</td>
+    <td>{{order.customer}}</td>
+    <td> <button type="button">Edit Order</button> </td>
+    <td> <button type="button">Delete Order</button> </td>
+
+  </tr>
+{% endfor %}
+</table>
+<a href = "{% url 'add_order' %}">
+  <button>Add Order</button></a>
+
+{% else %}
+  <p>No Order.</p>
+  <a href = "{% url 'add_order' %}">
+    <button>Add Order</button></a>
+{% endif %}
+
+{% endblock %}

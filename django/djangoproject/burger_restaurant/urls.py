@@ -8,6 +8,9 @@ urlpatterns = [
     path('customer/', views.customer, name = "customer" ),
     path('add_customer/', views.createCustomer, name="add_customer"),
     path('update_customer/<str:primary>/', views.updateCustomer, name = "update_customer" ),
-    
-    # path('order/', views.order, name = "order" )
+    path('delete_customer/<str:primary>/', views.deleteCustomer, name = "delete_customer" ),
+
+    path('order/', views.order, name = "order" ),
+    path('add_order/', views.createOrder, name="add_order")
+
 ]

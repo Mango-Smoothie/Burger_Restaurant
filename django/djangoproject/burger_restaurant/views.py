@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 
 from .models import Customer, Order
-from .forms import CustomerForm
+from .forms import CustomerForm, OrderForm
 
 def home(request):
 
@@ -42,9 +42,29 @@ def updateCustomer(request, primary):
     context ={'form': form}
     return render(request,'addUpdateCustomer.html', context) 
 
+def deleteCustomer(request, primary):
+    
+    customer = Customer.objects.get(id=primary)
+    if request.method =="POST":
+        customer.delete()
+        return redirect('/home/customer/')
+    context ={'customer': customer}
+    return render(request,'deleteCustomer.html', context) 
+
 
 def order(request):
-    context = {"orders": Order.objects.all()
-    }
+    context = {"orders": Order.objects.all()}
     # return HttpResponse("Hello, world. You're at the Burger Restaurant index.")
-    return render(request, "order.html", context)
+    return render(request, "order.html", context)\
+
+def createOrder(request):
+        
+    form = OrderForm()
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/home/order/')
+
+    context = {'form':form}
+    return render(request,'addOrder.html', context)

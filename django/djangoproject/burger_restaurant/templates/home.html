@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "basehome.html" %}
 
 {% block title %}Burger Restaurant{% endblock %}
 
@@ -18,9 +18,9 @@
 <h1>Welcome To our Burger Restaurant!</h1>
 <h4>By: Nathan Tran and Han Choi</h4>
 
-<a href="{% url 'customer'%}"><button>View Customers</button></a>
+<a href="{% url 'customer'%}">View Customers</a>
 <br>
-<a href="{% url 'order'%}"><button>View Orders</button></a>
+<a href="{% url 'order'%}"> View Orders</a>
 
 
 {% endblock %}

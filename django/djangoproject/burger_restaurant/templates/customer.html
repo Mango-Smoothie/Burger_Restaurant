@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% block title %}Latest Statuses{% endblock %}
-
 {% block container %}
 
 <h2>Customers</h2>
@@ -15,7 +13,7 @@
     <td>{{customer.phone_num}}</td>
     <!-- <td> <button type="button">Add Student</button> </td> -->
     <td> <a href="{% url 'update_customer' customer.id%}"><button>Update Customer</button></a></td>
-    <td> <button type="button">Delete Student</button> </td>
+    <td> <a href="{% url 'delete_customer' customer.id%}"><button>Delete Customer</button></a> </td>
 
 
   </tr>
