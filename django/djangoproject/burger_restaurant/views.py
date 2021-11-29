@@ -2,18 +2,15 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 
-from .models import Customer, Order
+from .models import Customer, Order, Side_Menu, Drink_Menu
 from .forms import CustomerForm, OrderForm
 
 def home(request):
-
-    # return HttpResponse("Hello, world. You're at the Burger Restaurant index.")
     return render(request, "home.html")
 
 def customer(request):
     context = {"customers": Customer.objects.all()
     }
-    # return HttpResponse("Hello, world. You're at the Burger Restaurant index.")
     return render(request, "customer.html", context)
 
 def createCustomer(request):
@@ -44,12 +41,14 @@ def updateCustomer(request, primary):
 
 def deleteCustomer(request, primary):
     
-    customer = Customer.objects.get(id=primary)
-    if request.method =="POST":
-        customer.delete()
-        return redirect('/home/customer/')
-    context ={'customer': customer}
-    return render(request,'deleteCustomer.html', context) 
+
+    Customer.objects.filter(id=primary).delete()
+    context = {"customers": Customer.objects.all()
+    }
+    # if request.method =="POST":
+    #     customer.delete()
+    #     return redirect('/home/customer/')
+    return render(request,'customer.html', context) 
 
 
 def order(request):
@@ -92,3 +91,9 @@ def deleteOrder(request, primary):
         return redirect('/home/order/')
     context ={'order': order}
     return render(request,'deleteOrder.html', context) 
+
+def menu(request):
+    context = {"sides": Side_Menu.objects.all(),
+            "drinks": Drink_Menu.objects.all(),
+    }
+    return render(request, "menu.html", context)

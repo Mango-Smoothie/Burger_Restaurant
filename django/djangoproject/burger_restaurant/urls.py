@@ -15,5 +15,6 @@ urlpatterns = [
     path('update_order/<str:primary>/', views.updateOrder, name = "update_order" ),
     path('delete_order/<str:primary>/', views.deleteOrder, name = "delete_order" ),
 
+    path('menu/', views.menu, name = "menu" ),
 
 ]
