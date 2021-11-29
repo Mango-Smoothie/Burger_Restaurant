@@ -16,5 +16,13 @@ urlpatterns = [
     path('delete_order/<str:primary>/', views.deleteOrder, name = "delete_order" ),
 
     path('menu/', views.menu, name = "menu" ),
+    path('add_side/', views.createSide, name="add_side"),
+    path('add_drink/', views.createDrink, name="add_drink"),
+    path('update_side/<str:primary>/', views.updateSide, name = "update_side" ),
+    path('update_drink/<str:primary>/', views.updateDrink, name = "update_drink" ),
+    path('delete_side/<str:primary>/', views.deleteSide, name = "delete_side" ),
+    path('delete_drink/<str:primary>/', views.deleteDrink, name = "delete_drink" ),
+
+
 
 ]

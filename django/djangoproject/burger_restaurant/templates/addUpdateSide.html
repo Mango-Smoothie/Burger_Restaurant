@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<h1>Create a Side </h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+
+<input type="submit" name="Submit"/>
+</form>
+
+{% endblock %}

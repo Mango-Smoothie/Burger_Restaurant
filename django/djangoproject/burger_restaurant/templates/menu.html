@@ -6,13 +6,13 @@
 {% if sides %}
 
 <table>
-<tr><th>Name</th><th>Phone Number</th><th>Update</th><th>Delete</th></tr>
+<tr><th>Name</th><th>Price</th><th>Update</th><th>Delete</th></tr>
 {% for side in sides %}
   <tr>
     <td>{{side.side_name}}</td>
     <td>{{side.s_price}}</td>
-    <td> <a href="{% url 'update_side' side.id%}"><button>Update Side</button></a></td>
-    <td> <a href="{% url 'delete_side' side.id%}"><button>Delete Side</button></a> </td>
+    <td> <a href="{% url 'update_side' side.side_id%}"><button>Update Side</button></a></td>
+    <td> <a href="{% url 'delete_side' side.side_id%}"><button>Delete Side</button></a> </td>
 
 
   </tr>
@@ -32,24 +32,24 @@
 {% if drinks %}
 
 <table>
-<tr><th>Name</th><th>Phone Number</th><th>Update</th><th>Delete</th></tr>
+<tr><th>Name</th><th>Price</th><th>Update</th><th>Delete</th></tr>
 {% for drink in drinks %}
   <tr>
     <td>{{drink.drink_name}}</td>
     <td>{{drink.d_price}}</td>
-    <td> <a href="{% url 'update_drink' side.id%}"><button>Update Drink</button></a></td>
-    <td> <a href="{% url 'delete_drink' side.id%}"><button>Delete Drink</button></a> </td>
+    <td> <a href="{% url 'update_drink' drink.drink_id%}"><button>Update Drink</button></a></td>
+    <td> <a href="{% url 'delete_drink' drink.drink_id%}"><button>Delete Drink</button></a> </td>
 
 
   </tr>
 {% endfor %}
 </table>
-<a href="{% url 'add_side' %}">
+<a href="{% url 'add_drink' %}">
 <button>Add Drink</button></a>
 
 {% else %}
-  <p>No Sides.</p>
-  <a href="{% url 'add_side' %}">
+  <p>No Drinks.</p>
+  <a href="{% url 'add_drink' %}">
     <button>Add Drink</button></a>
 {% endif %}
 
