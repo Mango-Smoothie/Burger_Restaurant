@@ -23,10 +23,10 @@ def createCustomer(request):
         form = CustomerForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/customer/')
+            return redirect('/home/customer/')
 
     context = {'form':form}
-    return render(request,'addCustomer.html', context) 
+    return render(request,'addUpdateCustomer.html', context) 
 
 def updateCustomer(request, primary):
     
@@ -37,10 +37,10 @@ def updateCustomer(request, primary):
         form = CustomerForm(request.POST, instance = customer)
         if form.is_valid():
             form.save()
-            return redirect('/home/')
+            return redirect('/home/customer/')
 
     context ={'form': form}
-    return render(request,'addCustomer.html', context) 
+    return render(request,'addUpdateCustomer.html', context) 
 
 
 def order(request):
