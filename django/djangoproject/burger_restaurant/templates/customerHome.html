@@ -1,0 +1,14 @@
+{% extends "basehome.html" %}
+
+{% block title %}Burger Restaurant{% endblock %}
+
+{% block container %}
+
+<h1>Welcome To your User Home</h1>
+<h4>By: Nathan Tran and Han Choi</h4>
+
+<a href="{% url 'menu' %}">
+    <button>Place an Order</button></a>
+
+    <button>View Order</button>
+{% endblock %}

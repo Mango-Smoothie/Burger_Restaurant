@@ -5,8 +5,18 @@ from django.http import HttpResponse
 from .models import Customer, Order, Patty_Menu, Sauce_Menu, Side_Menu, Drink_Menu, Buns_Menu, Veggie_Menu
 from .forms import BunsForm, CustomerForm, OrderForm, PattyForm, SauceForm, SideForm, DrinkForm, VeggieForm
 
+def main(request):
+    form = CustomerForm()
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
+        if Customer.objects.filter(name = request.POST['name'], phone_num = request.POST['phone_num']).exists():
+            return redirect('/main/' + str(request.POST['id'] + '/'))
+
+    context = {'form':form}
+    return render(request, "customerLogin.html", context)
+
 def home(request):
-    return render(request, "home.html")
+    return render(request, "customerHome.html")
 
 def customer(request):
     context = {"customers": Customer.objects.all()
@@ -18,9 +28,12 @@ def createCustomer(request):
     form = CustomerForm()
     if request.method == 'POST':
         form = CustomerForm(request.POST)
+        # check if the name and number exist in db
+        # if Customer.objects.filter(name = request.POST['name'], phone_num = request.POST['phone_num']).exists():
+        #     return redirect('/main/' + str(request.POST['id'] + '/'))
         if form.is_valid():
             form.save()
-            return redirect('/home/customer/')
+            return redirect('/main/')
 
     context = {'form':form}
     return render(request,'addUpdateCustomer.html', context) 
@@ -324,4 +337,17 @@ def deleteSauce(request, primary):
             "buns": Buns_Menu.objects.all(),
     }
     return render(request,'menu.html', context) 
+
+
+# def customerLogin(request):
+        
+#     form = CustomerForm()
+#     if request.method == 'POST':
+#         form = CustomerForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('/home/place_order/')
+
+#     context = {'form':form}
+#     return render(request,'customerLogIn.html', context)
 

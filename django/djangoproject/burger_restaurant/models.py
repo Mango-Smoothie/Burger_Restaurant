@@ -17,8 +17,14 @@ class Customer(models.Model):
             self.name, self.phone_num)
 
 class Order(models.Model):
+    STATUS = (
+        ('Not Started', 'Not Started'),
+        ('In Progress', 'In Progress'),
+        ('Finished', 'Finished')
+    )
+
     order_num = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    order_status = models.CharField("Order Status", max_length=100)
+    order_status = models.CharField("Order Status", max_length=100, choices=STATUS)
     total_price = models.DecimalField("Total Price", max_digits=10, decimal_places=2)
     customer = models.ForeignKey(Customer, null=False, on_delete=models.CASCADE)
 

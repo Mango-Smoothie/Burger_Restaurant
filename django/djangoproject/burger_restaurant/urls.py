@@ -3,17 +3,17 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, name="home"),
-    
-    path('customer/', views.customer, name = "customer" ),
+    path('', views.main, name="main"),
+    path('customer_home/', views.home, name="customer_home"),
+    # path('customer/', views.customer, name = "customer" ),
     path('add_customer/', views.createCustomer, name="add_customer"),
-    path('update_customer/<str:primary>/', views.updateCustomer, name = "update_customer" ),
-    path('delete_customer/<str:primary>/', views.deleteCustomer, name = "delete_customer" ),
+    # path('update_customer/<str:primary>/', views.updateCustomer, name = "update_customer" ),
+    # path('delete_customer/<str:primary>/', views.deleteCustomer, name = "delete_customer" ),
 
-    path('order/', views.order, name = "order" ),
-    path('add_order/', views.createOrder, name="add_order"),
-    path('update_order/<str:primary>/', views.updateOrder, name = "update_order" ),
-    path('delete_order/<str:primary>/', views.deleteOrder, name = "delete_order" ),
+    # path('order/', views.order, name = "order" ),
+    # path('add_order/', views.createOrder, name="add_order"),
+    # path('update_order/<str:primary>/', views.updateOrder, name = "update_order" ),
+    # path('delete_order/<str:primary>/', views.deleteOrder, name = "delete_order" ),
 
     path('menu/', views.menu, name = "menu" ),
     path('add_side/', views.createSide, name="add_side"),
@@ -35,6 +35,9 @@ urlpatterns = [
     path('delete_buns/<str:primary>/', views.deleteBuns, name = "delete_buns" ),
     path('delete_sauce/<str:primary>/', views.deleteSauce, name = "delete_sauce" ),
     path('delete_patty/<str:primary>/', views.deletePatty, name = "delete_patty" ),
+
+    # path('customer_login/', views.customerLogin, name="customer_login"),
+
 
 
 

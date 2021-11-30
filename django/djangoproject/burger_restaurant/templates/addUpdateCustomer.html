@@ -2,12 +2,15 @@
 
 {% block container %}
 
-<h1>Create a Customer </h1>
+<h1>Create an Account</h1>
 <form action="" method="POST">
     {% csrf_token %}
     {{form}}
 
 <input type="submit" name="Submit"/>
 </form>
+<br>
+<a href="{% url 'main' %}">
+    <button>Back to main</button></a>
 
 {% endblock %}
