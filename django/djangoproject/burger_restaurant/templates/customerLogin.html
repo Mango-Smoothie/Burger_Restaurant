@@ -13,11 +13,12 @@
     {% csrf_token %}
     {{form}}
     <br>
+    <a href = "{% url 'home' %}"> Cancel</a>
+
     <input type = "submit" name = "Login">
 </form>
 
-<a href="{% url 'add_customer' %}">
+<a href="{% url 'add customer' %}">
     <button>New? Create an Account Here!</button></a>
-
 
 {% endblock %}
