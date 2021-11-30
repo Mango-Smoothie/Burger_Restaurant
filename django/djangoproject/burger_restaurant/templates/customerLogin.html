@@ -9,16 +9,13 @@
 <h2>Log Into Your Account</h2>
 
 <form action = "" method = "POST">
-    
     {% csrf_token %}
     {{form}}
-    <br>
-    <a href = "{% url 'home' %}"> Cancel</a>
-
-    <input type = "submit" name = "Login">
+    
+<input type = "submit" name = "Login">
 </form>
 
-<a href="{% url 'add customer' %}">
+<a href="{% url 'add_customer' %}">
     <button>New? Create an Account Here!</button></a>
 
 {% endblock %}

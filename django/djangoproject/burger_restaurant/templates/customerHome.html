@@ -4,11 +4,13 @@
 
 {% block container %}
 
-<h1>Welcome To your User Home</h1>
-<h4>By: Nathan Tran and Han Choi</h4>
+
+<h1>Welcome {{customer.name}}! </h1>
+<h4>What would you like to do?</h4>
 
 <a href="{% url 'menu' %}">
     <button>Place an Order</button></a>
 
     <button>View Order</button>
+
 {% endblock %}

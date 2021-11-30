@@ -10,13 +10,19 @@ def main(request):
     if request.method == 'POST':
         form = CustomerForm(request.POST)
         if Customer.objects.filter(name = request.POST['name'], phone_num = request.POST['phone_num']).exists():
-            return redirect('/main/' + str(request.POST['id'] + '/'))
+            customer = Customer.objects.get(name = request.POST['name'], phone_num = request.POST['phone_num'])
+            print("*******" + str(customer.id))
+            return redirect('/main/customer_home/' + str(customer.id) + '/')
 
     context = {'form':form}
     return render(request, "customerLogin.html", context)
 
-def home(request):
-    return render(request, "customerHome.html")
+def home(request, primary):
+    context = {
+        "customer":Customer.objects.get(id=primary),
+    }
+    return render(request, "customerHome.html", context)
+
 
 def customer(request):
     context = {"customers": Customer.objects.all()
@@ -31,6 +37,7 @@ def createCustomer(request):
         # check if the name and number exist in db
         # if Customer.objects.filter(name = request.POST['name'], phone_num = request.POST['phone_num']).exists():
         #     return redirect('/main/' + str(request.POST['id'] + '/'))
+
         if form.is_valid():
             form.save()
             return redirect('/main/')

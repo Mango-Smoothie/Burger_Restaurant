@@ -51,36 +51,3 @@ docker compose exec django python manage.py createsuperuser
 ```
 docker compose exec django python manage.py makemigrations
 ```
-
-
-
-{% if orders %}
-<table>
-<tr><th>Order Number</th><th>Order Status</th><th>Total Price</th><th>Customer Phone Number</th><th>Update</th><th>Delete</th></tr>
-{% for order in orders %}
-  <tr>
-    <td>{{order.order_num}}</td>
-    <td>{{order.order_status}}</td>
-    <td>{{order.total_price}}</td>
-    <td>{{order.customer}}</td>
-    <!-- <td> <button type="button">Add Student</button> </td> -->
-    <!-- <td> <a href="{% url 'update_customer' customer.id%}"><button>Update Customer</button></a></td> -->
-    <td> <button type="button">Edit Order</button> </td>
-    <td> <button type="button">Delete Order</button> </td>
-
-
-  </tr>
-{% endfor %}
-</table>
-<!-- <a href="{% url 'add_customer' %}">
-<button>Add Customer</button></a> -->
-<button type="button">Add Order</button></a>
-
-{% else %}
-  <p>No Order.</p>
-  <!-- <a href="{% url 'add_customer' %}">
-    <button>Add Customer</button></a> -->
-  <button type="button">Add Order</button></a>
-
-{% endif %}
-
