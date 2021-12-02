@@ -138,9 +138,16 @@
 <p>No Drinks.</p>
 {% endif %}
 
+<br>
+<br>
+<h2>Select Menu</h2>
 <form action = "" method = "POST">
   {% csrf_token %}
   {{sideForm}}
+  <br>
+  {{drinkForm}}
+  <br>
+  {{burgerForm}}
   
 <input type = "submit" name = "Login">
 </form>

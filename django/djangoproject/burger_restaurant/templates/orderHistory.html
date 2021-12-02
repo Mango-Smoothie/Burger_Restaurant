@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<h2>Order History</h2>
+
+{% if orders %}
+<table>
+    <tr>
+        <th>Order Number</th>
+
+        <th>Order Status</th>
+        <th>Total Price</th>
+    </tr>
+    {% for order in orders %}
+    <tr>
+        <td>{{order.order_num}}</td>
+        <td>{{order.order_status}}</td>
+        <td>{{order.total_price}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% else %}
+<p>No Orders.</p>
+{% endif %}
+<br>
+<a href="{% url 'customer_home' customer.id %}">
+    <button>Back to Home</button></a>
+
+{% endblock %}

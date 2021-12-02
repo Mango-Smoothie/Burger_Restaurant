@@ -8,9 +8,15 @@
 <h1>Welcome {{customer.name}}! </h1>
 <h4>What would you like to do?</h4>
 
-<a href="{% url 'menu' %}">
-    <button>Place an Order</button></a>
+<form action="" method="POST">
+    {% csrf_token %}
 
-    <button>View Order</button>
+    <input type="submit" value="Place Order" name="submit">
+</form>
 
+<a href="{% url 'order_history' customer.id %}">
+    <button>view Orders</button></a>
+<br>
+<a href="{% url 'main' %}">
+    <button>Log Out</button></a>
 {% endblock %}

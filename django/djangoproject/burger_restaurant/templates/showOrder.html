@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block container %}
+<h1>Order Confirmation</h1>
+<br>
+<h2>Thank you for your order! Review your order here </h2>
+
+<h3>Order Number: {{order.order_num}}</h3>
+{% if order %}
+<table>
+    <tr>
+        <th>Order Status</th>
+        <th>Total Price</th>
+
+    </tr>
+    <tr>
+        <td>{{order.order_status}}</td>
+        <td>{{order.total_price}}</td>
+
+    </tr>
+</table>
+
+{% else %}
+<p>Order failed.</p>
+{% endif %}
+
+{% if burgerOrder %}
+<h3>Your Burger!</h3>
+<table>
+    <tr>
+        <th>Patty</th>
+        <th>Buns</th>
+        <th>Veggies</th>
+        <th>Sauce</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        
+    </tr>
+    <tr>
+        <td>{{burgerOrder.patty}}</td>
+        <td>{{burgerOrder.buns}}</td>
+        <td>{{burgerOrder.veggies}}</td>
+        <td>{{burgerOrder.sauce}}</td>
+        <td>{{burgerOrder.b_quantity}}</td>
+        <td>{{burgerOrder.burger_total}}</td>
+
+    </tr>
+</table>
+
+{% endif %}
+
+{% if sideOrder %}
+<h3>Your Side!</h3>
+<table>
+    <tr>
+        <th>Side</th>
+        <th>Quanitity</th>
+        <th>Price</th>
+
+    </tr>
+    <tr>
+        <td>{{sideOrder.side_name}}</td>
+        <td>{{sideOrder.s_quantity}}</td>
+        <td>{{sideOrder.side_total}}</td>
+        
+    </tr>
+</table>
+
+{% endif %}
+
+{% if drinkOrder%}
+<h3>Your Drink!</h3>
+<table>
+    <tr>
+        <th>Drink</th>
+        <th>Quanitity</th>
+        <th>Price</th>
+
+    </tr>
+    <tr>
+        <td>{{drinkOrder.drink_name}}</td>
+        <td>{{drinkOrder.d_quantity}}</td>
+        <td>{{drinkOrder.drink_total}}</td>
+    </tr>
+</table>
+
+{% endif %}
+
+<br>
+<a href="{% url 'customer_home' order.customer.id %}">
+    <button>Back to Home</button></a>
+
+{% endblock %}
