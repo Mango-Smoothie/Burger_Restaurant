@@ -8,13 +8,12 @@
 <table>
     <tr>
         <th>Order Number</th>
-
         <th>Order Status</th>
         <th>Total Price</th>
     </tr>
     {% for order in orders %}
     <tr>
-        <td>{{order.order_num}}</td>
+        <td> <a href="{% url 'show_order' order.order_num %}"> {{order.order_num}}</a> </td>
         <td>{{order.order_status}}</td>
         <td>{{order.total_price}}</td>
     </tr>
