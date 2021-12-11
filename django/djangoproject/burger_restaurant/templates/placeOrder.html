@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<h1>Place an Order</h1>
+<h2>Burger</h2>
+<table>
+  <tr>
+    <th>Patty</th>
+    <th>Buns</th>
+    <th>Veggies</th>
+    <th>Sauce</th>
+  </tr>
+  <td>
+    {% if patties %}
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+      {% for patty in patties %}
+      <tr>
+        <td>{{patty.patty_name}}</td>
+        <td>{{patty.p_price}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    {% else %}
+    <p>No Patty.</p>
+    {% endif %}
+  </td>
+  <td>
+    {% if buns %}
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+      {% for bun in buns %}
+      <tr>
+        <td>{{bun.buns_name}}</td>
+        <td>{{bun.b_price}}</td>
+
+      </tr>
+      {% endfor %}
+    </table>
+
+    {% else %}
+    <p>No Buns.</p>
+    {% endif %}
+  </td>
+  <td>
+    {% if veggies %}
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+      {% for veggie in veggies %}
+      <tr>
+        <td>{{veggie.veggie_name}}</td>
+        <td>{{veggie.veggie_price}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    {% else %}
+    <p>No Veggies.</p>
+    {% endif %}
+  </td>
+  <td>
+    {% if sauces %}
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+      {% for sauce in sauces %}
+      <tr>
+        <td>{{sauce.sauce_name}}</td>
+        <td>{{sauce.s_price}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    {% else %}
+    <p>No Sauces.</p>
+    {% endif %}
+  </td>
+</table>
+
+
+<h2>Sides</h2>
+<table>
+  {% if sides %}
+
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  {% for side in sides %}
+  <tr>
+    <td>{{side.side_name}}</td>
+    <td>{{side.s_price}}</td>
+
+
+  </tr>
+  {% endfor %}
+</table>
+
+{% else %}
+<p>No sides.</p>
+{% endif %}
+
+<h2>Drinks</h2>
+{% if drinks %}
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  {% for drink in drinks %}
+  <tr>
+    <td>{{drink.drink_name}}</td>
+    <td>{{drink.d_price}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% else %}
+<p>No Drinks.</p>
+{% endif %}
+
+<br>
+<h2>Select Menu</h2>
+<form action = "" method = "POST">
+  {% csrf_token %}
+  {{sideForm}}
+  <br>
+  {{drinkForm}}
+  <br>
+  {{burgerForm}}
+  
+<input type = "submit" name = "Login">
+</form>
+
+{% endblock %}
